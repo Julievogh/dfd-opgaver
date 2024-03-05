@@ -1,11 +1,10 @@
 .card {
   padding: 1rem;
-}
 
-.content > * + * {
-  margin-top: 0.25rlh;
+  .content > * + * {
+    margin-top: 0.25rlh;
+  }
 }
-
 .card:first-child h3 {
   font-size: 1.6rem;
 }
