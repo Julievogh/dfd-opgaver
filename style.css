@@ -1,4 +1,34 @@
 article {
-    max-width: 65ch;
-    margin-inline: auto;
+  /*
+  --min-col-width: 0.2fr;
+  --max-col-width: 2fr;
+  --col-width: clamp(var(--min-col-width), 20vw, var(--max-col-width));
+   VIRKER IKKE */
+
+  --gap: 1rem;
+
+  display: grid;
+  grid-template-columns: [start-line] 1.8fr [feature-line-start] 0.6fr [content-line-start] 3fr [content-line-end] 0.6fr [feature-line-end] 1.8fr [end-line];
+}
+
+article p,
+h2,
+h3 {
+  grid-column: content-line-start / content-line-end;
+  margin: var(--gap);
+}
+
+article blockquote {
+  word-wrap: break-word;
+  grid-column: feature-line-start / feature-line-end;
+}
+
+article img {
+  grid-column: start-line / end-line;
+}
+
+@media screen and (max-width: 768px) {
+  article {
+    grid-template-columns: [start-line] 0.6fr [feature-line-start] 0.6fr [content-line-start] 3fr [content-line-end] 0.6fr [feature-line-end] 0.6fr [end-line];
+  }
 }
