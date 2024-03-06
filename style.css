@@ -39,7 +39,7 @@ body {
 article {
   max-width: 70ch;
   margin: 0 auto;
-  padding: var(--space-2xl); /* Add padding if necessary */
+  padding: var(--space-2xl); 
 }
 h1 {
   font-size: var(--step-4);
