@@ -2,19 +2,64 @@
 const { cardContent } = Astro.props;
 ---
 
-<ul class="full-width">
-  {
-    cardContent.map((card) => (
-      <li>
-        <h3>{card.title}</h3>
-        <p>{card.body}</p>
-      </li>
-    ))
-  }
-</ul>
+<div class="scroll-container">
+  <ul class="card-list">
+    {
+      cardContent.map((card, index) => (
+        <li class="card" key={index}>
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </li>
+      ))
+    }
+  </ul>
+</div>
 
 <style>
+  .scroll-container {
+    overflow-x: auto;
+    scroll-snap-type: normal;
+    width: 100%;
+  }
+
+  .card-list {
+    list-style: none;
+    display: flex;
+    gap: var(--card-gap);
+  }
+
+  .card {
+    max-width: 25rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: var(--card-padding);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    border-bottom: 1px solid var(--card-gap);
+    background: var(--card-background);
+    background-image: radial-gradient(circle, rgb(219, 201, 201) 1px, transparent 1px);
+    background-size: 10px 10px;
+    border-radius: var(--card-border-radius);
+  }
+
   ul {
     list-style: none;
+    display: flex;
+    gap: var(--card-gap);
+  }
+
+  li {
+    width: var(--content-width);
+    padding: var(--card-padding);
+
+    border-bottom: 1px solid var(--card-gap);
+    background: var(--card-background);
+    background-image: radial-gradient(circle, rgb(219, 201, 201) 1px, transparent 1px);
+    background-size: 10px 10px;
+    border-radius: var(--card-border-radius);
+  }
+
+  h3 {
+    margin-block: 0;
   }
 </style>
